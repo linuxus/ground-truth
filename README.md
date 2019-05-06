@@ -1,4 +1,43 @@
-# AWS SageMaker Ground Truth - Build Highly Accurate Datasets and Train Them with ML models
+# LAB 1: Image classification transfer learning
+This notebook `Imageclassification-transfer-learning-highlevel.ipynb` lab is an end-2-end system for image classification fine-tuning using a pre-trained resnet model on imagenet dataset. Caltech-256 dataset is used as a transfer learning dataset. In this lab, you will use the Amazon sagemaker image classification algorithm in transfer learning mode to fine-tune a pre-trained model (trained on imagenet data) to learn to classify a new dataset. In particular, the pre-trained model will be fine-tuned using caltech-256 dataset.. Once the training is complete, the notebook shows how to host the trained model for inference.
+
+## 1. Create a SageMaker notebook instance
+
+You'll use Amazon SageMaker Jupyter Notebook instance to run the notebook.
+
+1. Go to Amazon SageMaker Notebook in AWS Console at https://console.aws.amazon.com/sagemaker/home?region=us-east-1#/notebook-instances
+2. Click on "*Create notebook instance*"
+![](./img/create_notebook.png)
+3. Give a name to your notebook (example: lab1-notebook)
+4. Keep the Notebook instance type to *ml.t2.medium*
+5. Under Permissions and encryption drop down the IAM role and select existing role. Example:
+![](./img/create_notebook_1.png)
+
+*Note*: If a role does not exist select to create one.
+6. Leave the rest defaults and click on "*Create notebook instance*" at the bottom of the screen.
+
+It'll take 3-5 min to create the instance. The following screenshot shows a successfully created notebook instance:
+*Note*: The Status must show "*InService*".
+
+![](./img/create_notebook_2.png)
+
+7. Click on the "*Open Jupyter*" link under the "Actions" column. This will open a Juptyer notebook web interface similar to the below:
+
+![](./img/create_notebook_3.png)
+
+8. Click on the SageMaker Examples link tab and a collection of SageMaker sample notebooks will open. You'll use the "*Image-classification-transfer-learning-highlevel.ipynb*" noteboo. Click the "*Use*" button next to it. Select "*Create copy*" when the popup windows appears.
+
+![](./img/create_notebook_4.png)
+![](./img/create_notebook_5.png)
+
+9. This will create a copy of the notebook and will run inside SageMaker instance
+
+## 2. Follow the Notebook instruction
+1. Click next to each cell and select the run button on the notebook
+
+![](./img/create_notebook_6.png)
+
+# LAB 2: Building Highly Accurate Datasets and Train Them with Machine Learning Models
 Amazon SageMaker can make it easy for customers to to efficiently and accurately label the datasets required for training machine learning systems.
 
 Labeling datasets is a critical phase of training any supervised machine learning models. Data scientists and developers can now easily train machine learning models on datasets labeled by Amazon SageMaker Ground Truth. Amazon SageMaker Training now accepts the labeled datasets produced in augmented manifest format as input through both AWS Management Console.
@@ -22,13 +61,13 @@ Steps involved in traiing the ML model and hosting it:
 ## Table of Contents
 1. [Architecture](#architecture)
 2. [Dataset labeling tasks with Amazon SageMaker Ground Truth ](#labelsteps)
-
+3. [Training Model on SageMaker Ground Truth Dataset](#traininglsteps)
 ## 1. Architecture <a id="architecture"></a>
 
 ## 2. Dataset labeling tasks with Ground Truth <a id="labelsteps"></a>
 
-### 2.1 Create S3 buckets
-
+### 2.1 Create S3 Buckets
+#### 2.1.1 Create Raw Data bucket
 1. Go to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/
 2. Click on Create bucket.
 3. Under Name and region:
@@ -39,23 +78,37 @@ Steps involved in traiing the ML model and hosting it:
 
 1. Leave default values for Configure Options screen and click Next
 3. Click Next, and click Create bucket.
-4. Go back to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/ 
-5. Click on Create bucket.
-6. Under Name and region:
+
+#### 2.1.2 Create Labeling Job Output bucket
+1. Go back to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/ 
+2. Click on Create bucket.
+3. Under Name and region:
 
 * Bucket name: Enter a bucket name-your-name-label-output (example: lab1-label-output)
 * Choose US East (N. Virginia)
 * Click Next
 
-7. Leave default values for Configure Options screen and click Next
-8. Click Next, and click Create bucket.
+4. Leave default values for Configure Options screen and click Next
+5. Click Next, and click Create bucket.
+
+#### 2.1.3 Create Training and Validation Job bucket
+1. Go back to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/ 
+2. Click on Create bucket.
+3. Under Name and region:
+
+* Bucket name: Enter a bucket name-your-name-train-data (example: lab1-train-data)
+* Choose US East (N. Virginia)
+* Click Next
+
+4. Leave default values for Configure Options screen and click Next
+5. Click Next, and click Create bucket.
 
 ### 2.2 Download the raw data 
 1. Donwload the raw data of images from the following link: [raw-data.zip](https://www.dropbox.com/s/irk9dnml01kjmzf/raw-data.zip?dl=0)
 2. Save it on your machine and unzip it
-### 2.3 Storing data in Amazon S3
+### 2.3 Storing raw data in Amazon S3
 1. Go to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/
-2. Click on the bucket you've created earlier
+2. Click on the raw-data bucket you've created earlier
 3. Click on Upload button on the top left corner of the console
 4. Click on Add files button and select all the images that you unziped earlier and click on "*Upload*" button
 ### 2.4 Creating manifest file for the dataset
@@ -133,9 +186,88 @@ Here is an example of the augmented manifest output file:
         "type": "groundtruth/image-classification"
     }
 }
-
 ```
 
 Now you're ready to train the model with this dataset.
 
-## 3. 
+## 3. Training Model on SageMaker Ground Truth Dataset <a id="traininglsteps"></a>
+ In earlier steps you used Amazon SageMaker Ground Truth to manage a private workforce for classifying all the parts in the images, thus creating a labeled dataset for training an Amazon SageMaker Image Classification model. Now you can proceed to explore the labeled dataset, post process it and train an image classification model in Amazon SageMaker.
+
+### 3.1 Explore the labeled dataset
+1. Go to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/
+2. Click on the label-output bucket you've created earlier (example: lab1-label-output)
+3. Open the labeling job folder (example: lab1-labeling-job), then the folder called manifests and finaly open output folder.
+4. Click on the check box next to "*output.manifest*" file and click on "*Donwload*" button
+
+Below is the JSON object in the augmented manifest file that you've produced during labeling job. The below output have been formatted for ease of visualization. In the augmented manifest file, this will appear as a JSON object in a single line. Try to open in a text editor and explore its content.
+
+```json
+{
+    "source-ref": "s3://lab1-rawdata/IMG_0085.JPG",
+    "lab1-labeling-job": 0,
+    "lab1-labeling-job-metadata": {
+        "confidence": 0.95,
+        "job-name": "labeling-job/lab1-labeling-job",
+        "class-name": "RH",
+        "human-annotated": "yes",
+        "creation-date": "2019-05-04T20:26:41.638095",
+        "type": "groundtruth/image-classification"
+    }
+}
+{
+    "source-ref": "s3://lab1-rawdata/IMG_0086.JPG",
+    "lab1-labeling-job": 0,
+    "lab1-labeling-job-metadata": {
+        "confidence": 0.68,
+        "job-name": "labeling-job/lab1-labeling-job",
+        "class-name": "RH",
+        "human-annotated": "yes",
+        "creation-date": "2019-05-04T20:44:14.458699",
+        "type": "groundtruth/image-classification"
+    }
+}
+```
+You can notice that the dataset has been label by human by looking at the key "human-annotated" with a value of "yes".
+
+The *source-ref* is the Amazon S3 URI of the image file. Note that *lab1-labeling-job* (named after the Amazon SageMaker Ground Truth labeling job that produced the manifest file in the first place is the list of labels. The labels consist of the class-name (RH) labeled by human labeler.
+
+### 3.2 Splitting the labeled dataset
+The At this stage, you have fully labeled you dataset and you can train a machine learning model to classify images based on the categories you previously defined (LH or RH). You'll do so using the augmented manifest output of your labeling job - no additional file translation or manipulation required! 
+
+First, we'll split our augmented manifest into a training set and a validation set using an 80/20 split.
+
+#### 3.2.1 Create a SageMaker notebook instance
+You can proceed with this section only if you have not done Lab 1 since it creates a SageMaker notebook instance.
+
+In order to achieve this there is a Python code that you'll need to run. You'll use Amazon SageMaker Jupyter Notebook instance to run this code.
+
+1. Go to Amazon SageMaker Notebook in AWS Console at https://console.aws.amazon.com/sagemaker/home?region=us-east-1#/notebook-instances
+2. Click on "*Create notebook instance*"
+![](./img/create_notebook.png)
+3. Give a name to your notebook (example: lab1-notebook)
+4. Keep the Notebook instance type to *ml.t2.medium*
+5. Under Permissions and encryption drop down the IAM role and select existing role. Exampl:
+![](./img/create_notebook_1.png)
+6. Leave the rest defaults and click on "*Create notebook instance*" at the bottom of the screen.
+
+It'll take 3-5 min to create the instance. The following screenshot shows a successfully created notebook instance:
+*Note*: The Status must show "*InService*".
+
+![](./img/create_notebook_2.png)
+
+#### 3.3.2 Upload the notebook file into your instance
+1. Download [ic-notebook-demo.ipynb](./code/ic-notebook-demo.ipynb).
+7. Under Function code:
+
+* Code entry type: Upload a zip file
+* Under Function package, click Upload and select the zip file you downloaded in earlier step.
+* Click Save.
+
+#### 3.2.1 Download the output augmented manifest file
+
+### 3.3 Create the Amazon SageMaker training job
+You'll now train an Amazon SageMaker Image Classification Model which takes the augmented manifest file from step as an input.
+
+
+#### 3.3.3 Run the different cell of the notebook code
+
