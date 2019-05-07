@@ -236,26 +236,32 @@ The At this stage, you have fully labeled you dataset and you can train a machin
 
 First, we'll split our augmented manifest into a training set and a validation set using an 80/20 split.
 
-Because the labeling job is a long process due to manual human annotation the following are a randomly split manifest files:
+#### 3.2.1 Create a SageMaker notebook instance
+You can proceed with this section only if you have not done Lab 1 since it creates a SageMaker notebook instance.
 
-1. Please download each manifest files:
-    - For training data: training.manifest
-    - For validation data: validation.manifest
+In order to achieve this there is a Python code that you'll need to run. You'll use Amazon SageMaker Jupyter Notebook instance to run this code.
 
-2. Once you've downloaded, open each manifest file and update the content with the correct path for each object. You'll be replacing the word *lab#* with your lab ID (example: lab1, lab2, lab3 or labX) in both manifest content. Below is an example:
+1. Go to Amazon SageMaker Notebook in AWS Console at https://console.aws.amazon.com/sagemaker/home?region=us-east-1#/notebook-instances
+2. Click on "*Create notebook instance*"
+![](./img/create_notebook.png)
+3. Give a name to your notebook (example: lab1-notebook)
+4. Keep the Notebook instance type to *ml.t2.medium*
+5. Under Permissions and encryption drop down the IAM role and select existing role. Exampl:
+![](./img/create_notebook_1.png)
+6. Leave the rest defaults and click on "*Create notebook instance*" at the bottom of the screen.
 
-Before:
-```json
-{"source-ref":"s3://lab#-rawdata/IMG_0085.JPG","lab#-labeling-job":0,"lab#-labeling-job-metadata":{"confidence":0.95,"job-name":"labeling-job/lab#-labeling-job","class-name":"RH","human-annotated":"yes","creation-date":"2019-05-04T20:26:41.638095","type":"groundtruth/image-classification"}}
-{"source-ref":"s3://lab#-rawdata/IMG_0086.JPG","lab#-labeling-job":0,"lab#-labeling-job-metadata":{"confidence":0.68,"job-name":"labeling-job/lab#-labeling-job","class-name":"RH","human-annotated":"yes","creation-date":"2019-05-04T20:44:14.458699","type":"groundtruth/image-classification"}}
-```
+It'll take 3-5 min to create the instance. The following screenshot shows a successfully created notebook instance:
+*Note*: The Status must show "*InService*".
 
-After:
-```json
-{"source-ref":"s3://lab3-rawdata/IMG_0085.JPG","lab3-labeling-job":0,"lab3-labeling-job-metadata":{"confidence":0.95,"job-name":"labeling-job/lab3-labeling-job","class-name":"RH","human-annotated":"yes","creation-date":"2019-05-04T20:26:41.638095","type":"groundtruth/image-classification"}}
-{"source-ref":"s3://lab3-rawdata/IMG_0086.JPG","lab3-labeling-job":0,"lab3-labeling-job-metadata":{"confidence":0.68,"job-name":"labeling-job/lab3-labeling-job","class-name":"RH","human-annotated":"yes","creation-date":"2019-05-04T20:44:14.458699","type":"groundtruth/image-classification"}}
-```
-*Note*: you'll have to do a global search and replace the occurance of the "*lab#*" with yours.
+![](./img/create_notebook_2.png)
+
+#### 3.3.2 Upload the notebook file into your instance
+1. Download [ic-notebook-demo.ipynb](./code/ic-notebook-demo.ipynb).
+7. Under Function code:
+
+* Code entry type: Upload a zip file
+* Under Function package, click Upload and select the zip file you downloaded in earlier step.
+* Click Save.
 
 #### 3.2.1 Download the output augmented manifest file
 
