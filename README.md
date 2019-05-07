@@ -240,9 +240,11 @@ Because the labeling job is a long process due to manual human annotation the fo
 
 1. Please download each manifest files:
     - For training data: [train.manifest](./manifest/train.manifest)
+    - click on the raw button on the top right hand and save the page as train.manifest on your local machine.
     - For validation data: [validation.manifest](./manifest/validation.manifest)
+    - click on the raw button on the top right hand and save as validation.manifest on your local machine.
 
-2. Once you've downloaded, open each manifest file and update the content with the correct path for each object. You'll be replacing the word *lab#* with your lab ID (example: lab1, lab2, lab3 or labX) in both manifest content. Below is an example:
+2. Once you've saved each file, open each manifest file and update the content with the correct path for each object. You'll be replacing the word *lab#* with your lab ID (example: lab1, lab2, lab3 or labX) in both manifest content. Below is an example:
 
 Before:
 ```json
