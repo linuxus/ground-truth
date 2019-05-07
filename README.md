@@ -239,8 +239,8 @@ First, we'll split our augmented manifest into a training set and a validation s
 Because the labeling job is a long process due to manual human annotation the following are a randomly split manifest files:
 
 1. Please download each manifest files:
-    - For training data: training.manifest
-    - For validation data: validation.manifest
+    - For training data: [train.manifest](./manifest/train.manifest)
+    - For validation data: [validation.manifest](./manifest/validation.manifest)
 
 2. Once you've downloaded, open each manifest file and update the content with the correct path for each object. You'll be replacing the word *lab#* with your lab ID (example: lab1, lab2, lab3 or labX) in both manifest content. Below is an example:
 
@@ -256,8 +256,6 @@ After:
 {"source-ref":"s3://lab3-rawdata/IMG_0086.JPG","lab3-labeling-job":0,"lab3-labeling-job-metadata":{"confidence":0.68,"job-name":"labeling-job/lab3-labeling-job","class-name":"RH","human-annotated":"yes","creation-date":"2019-05-04T20:44:14.458699","type":"groundtruth/image-classification"}}
 ```
 *Note*: you'll have to do a global search and replace the occurance of the "*lab#*" with yours.
-
-#### 3.2.1 Download the output augmented manifest file
 
 ### 3.3 Create the Amazon SageMaker training job
 You'll now train an Amazon SageMaker Image Classification Model which takes the augmented manifest file from step as an input.
