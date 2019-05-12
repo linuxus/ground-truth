@@ -1,5 +1,9 @@
 # LAB 1: Image classification transfer learning
-This notebook `Imageclassification-transfer-learning-highlevel.ipynb` lab is an end-2-end system for image classification fine-tuning using a pre-trained resnet model on imagenet dataset. Caltech-256 dataset is used as a transfer learning dataset. In this lab, you will use the Amazon sagemaker image classification algorithm in transfer learning mode to fine-tune a pre-trained model (trained on imagenet data) to learn to classify a new dataset. In particular, the pre-trained model will be fine-tuned using caltech-256 dataset.. Once the training is complete, the notebook shows how to host the trained model for inference.
+## Introduction
+
+  This lab is an end-2-end image classification. In this lab you'll learn how to fine-tuning using an existing pre-trained machine learning model on a different images dataset. The images dataset is called Caltech-256 dataset is used as a transfer learning dataset. In this lab, you will use the Amazon sagemaker image classification algorithm in transfer learning mode to fine-tune a pre-trained model (trained on imagenet data) to learn to classify a new dataset.
+  
+  The pre-trained model will be fine-tuned using caltech-256 dataset. Once the training is complete, the notebook shows how to host the trained model for inference. You'll be sending to the inference endpoint unseen images get a predition from the model you've trained.
 
 ## 1. Create a SageMaker notebook instance
 
@@ -25,7 +29,8 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 ![](./img/create_notebook_3.png)
 
-8. Click on the SageMaker Examples link tab and a collection of SageMaker sample notebooks will open. You'll use the "*Image-classification-transfer-learning-highlevel.ipynb*" noteboo. Click the "*Use*" button next to it. Select "*Create copy*" when the popup windows appears.
+8. Download the following Jupyter Notebook: [Lab 1-Transfer-learning-image-classifcation](https://www.dropbox.com/s/fiwagwtec4qsv7m/Lab%201-Transfer-learning-image-classifcation.ipynb?dl=0)
+9. Upload the following Jupyter Notebook into your i
 
 ![](./img/create_notebook_4.png)
 ![](./img/create_notebook_5.png)
@@ -37,7 +42,14 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 ![](./img/create_notebook_6.png)
 
-# LAB 2: Building Highly Accurate Datasets and Train Them with Machine Learning Models
+# LAB 2: 
+## Introduction
+
+Semantic Segmentation (SS) is the task of classifying every pixel in an image with a class from a known set of labels. In contrast, image classification generates only one label per image, and object detection generates a bounding box along with the label for each object in the image.
+
+
+
+# LAB 3: Building Highly Accurate Datasets and Train Them with Machine Learning Models
 Amazon SageMaker can make it easy for customers to to efficiently and accurately label the datasets required for training machine learning systems.
 
 Labeling datasets is a critical phase of training any supervised machine learning models. Data scientists and developers can now easily train machine learning models on datasets labeled by Amazon SageMaker Ground Truth. Amazon SageMaker Training now accepts the labeled datasets produced in augmented manifest format as input through both AWS Management Console.
