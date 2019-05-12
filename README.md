@@ -29,7 +29,7 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 ![](./img/create_notebook_3.png)
 
-8. Download the following Jupyter Notebook: [Lab 1-Transfer-learning-image-classifcation](https://www.dropbox.com/s/fiwagwtec4qsv7m/Lab%201-Transfer-learning-image-classifcation.ipynb?dl=1)
+8. Download Lab1 Jupyter Notebook: [Lab 1-Transfer-learning-image-classifcation](https://www.dropbox.com/s/fiwagwtec4qsv7m/Lab%201-Transfer-learning-image-classifcation.ipynb?dl=1)
 9. Upload the following Jupyter Notebook into your i
 
 ![](./img/create_notebook_7.png)
@@ -53,9 +53,26 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 Semantic Segmentation (SS) is the task of classifying every pixel in an image with a class from a known set of labels. In contrast, image classification generates only one label per image, and object detection generates a bounding box along with the label for each object in the image.
 
+Download Lab2 Jupyter Notebook: [Lab2-Lab 2-Semantic-image-segmentation_pascalvoc](https://www.dropbox.com/s/cq26dieq67azsah/Lab%202-Semantic-image-segmentation_pascalvoc.ipynb?dl=1)
+9. Upload the following Jupyter Notebook into your i
 
+![](./img/create_notebook_7.png)
 
-# LAB 3: Building Highly Accurate Datasets and Train Them with Machine Learning Models
+9. Click on the *Upload* button next to the file. The file will be uploaded into your Notebook instance:
+
+![](./img/create_notebook_8.png)
+
+10. Confirm that your file has been sucessfully uploaded by checking the last time modified:
+
+![](./img/create_notebook_9.png)
+
+## 2. Run the Notebook and Follow its instruction
+1. Clik on the file "*Lab1 - Transfer-learning-image-classification.ipynb*" to open it
+2. Click next to each cell and select the run button on the notebook
+
+![](./img/create_notebook_6.png)
+
+# LAB 3: Optional - Building Highly Accurate Datasets and Train Them with Machine Learning Models
 Amazon SageMaker can make it easy for customers to to efficiently and accurately label the datasets required for training machine learning systems.
 
 Labeling datasets is a critical phase of training any supervised machine learning models. Data scientists and developers can now easily train machine learning models on datasets labeled by Amazon SageMaker Ground Truth. Amazon SageMaker Training now accepts the labeled datasets produced in augmented manifest format as input through both AWS Management Console.
