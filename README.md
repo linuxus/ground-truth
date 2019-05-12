@@ -29,11 +29,10 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 ![](./img/create_notebook_3.png)
 
-8. Download the following Jupyter Notebook: [Lab 1-Transfer-learning-image-classifcation](https://www.dropbox.com/s/fiwagwtec4qsv7m/Lab%201-Transfer-learning-image-classifcation.ipynb?dl=0)
+8. Download the following Jupyter Notebook: [Lab 1-Transfer-learning-image-classifcation](https://www.dropbox.com/s/fiwagwtec4qsv7m/Lab%201-Transfer-learning-image-classifcation.ipynb?dl=1)
 9. Upload the following Jupyter Notebook into your i
 
-![](./img/create_notebook_4.png)
-![](./img/create_notebook_5.png)
+![](./img/create_notebook_7.png)
 
 9. This will create a copy of the notebook and will run inside SageMaker instance
 
@@ -116,7 +115,7 @@ Steps involved in traiing the ML model and hosting it:
 5. Click Next, and click Create bucket.
 
 ### 2.2 Download the raw data 
-1. Donwload the raw data of images from the following link: [raw-data.zip](https://www.dropbox.com/s/irk9dnml01kjmzf/raw-data.zip?dl=0)
+1. Donwload the raw data of images from the following link: [raw-data.zip](https://www.dropbox.com/s/irk9dnml01kjmzf/raw-data.zip?dl=1)
 2. Save it on your machine and unzip it
 ### 2.3 Storing raw data in Amazon S3
 1. Go to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/
