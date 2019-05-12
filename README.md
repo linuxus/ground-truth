@@ -61,11 +61,11 @@ Semantic Segmentation (SS) is the task of classifying every pixel in an image wi
 
 3. Click on the *Upload* button next to the file. The file will be uploaded into your Notebook instance:
 
-![](./img/create_notebook_8.png)
+![](./img/create_notebook_10.png)
 
 4. Confirm that your file has been sucessfully uploaded by checking the last time modified:
 
-![](./img/create_notebook_9.png)
+![](./img/create_notebook_11.png)
 
 ## 2. Run the Notebook and Follow its instruction
 1. Clik on the file "*Lab1 - Transfer-learning-image-classification.ipynb*" to open it
