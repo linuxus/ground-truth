@@ -34,10 +34,17 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 ![](./img/create_notebook_7.png)
 
-9. This will create a copy of the notebook and will run inside SageMaker instance
+9. Click on the *Upload* button next to the file. The file will be uploaded into your Notebook instance:
 
-## 2. Follow the Notebook instruction
-1. Click next to each cell and select the run button on the notebook
+![](./img/create_notebook_8.png)
+
+10. Confirm that your file has been sucessfully uploaded by checking the last time modified:
+
+![](./img/create_notebook_9.png)
+
+## 2. Run the Notebook and Follow its instruction
+1. Clik on the file "*Lab1 - Transfer-learning-image-classification.ipynb*" to open it
+2. Click next to each cell and select the run button on the notebook
 
 ![](./img/create_notebook_6.png)
 
