@@ -53,17 +53,17 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 Semantic Segmentation (SS) is the task of classifying every pixel in an image with a class from a known set of labels. In contrast, image classification generates only one label per image, and object detection generates a bounding box along with the label for each object in the image.
 
-Download Lab2 Jupyter Notebook: [Lab2-Lab 2-Semantic-image-segmentation_pascalvoc](https://www.dropbox.com/s/cq26dieq67azsah/Lab%202-Semantic-image-segmentation_pascalvoc.ipynb?dl=1)
+1. Download Lab2 Jupyter Notebook: [Lab2-Lab 2-Semantic-image-segmentation_pascalvoc](https://www.dropbox.com/s/cq26dieq67azsah/Lab%202-Semantic-image-segmentation_pascalvoc.ipynb?dl=1)
 
-9. Upload the following Jupyter Notebook into your i
+2. Upload the following Jupyter Notebook into your i
 
 ![](./img/create_notebook_7.png)
 
-9. Click on the *Upload* button next to the file. The file will be uploaded into your Notebook instance:
+3. Click on the *Upload* button next to the file. The file will be uploaded into your Notebook instance:
 
 ![](./img/create_notebook_8.png)
 
-10. Confirm that your file has been sucessfully uploaded by checking the last time modified:
+4. Confirm that your file has been sucessfully uploaded by checking the last time modified:
 
 ![](./img/create_notebook_9.png)
 
