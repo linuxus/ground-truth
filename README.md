@@ -29,8 +29,9 @@ It'll take 3-5 min to create the instance. The following screenshot shows a succ
 
 ![](./img/create_notebook_3.png)
 
-8. Download Lab1 Jupyter Notebook: [Lab 1-Transfer-learning-image-classifcation](https://www.dropbox.com/s/fiwagwtec4qsv7m/Lab%201-Transfer-learning-image-classifcation.ipynb?dl=1)
-9. Upload the following Jupyter Notebook into your i
+8. Download Lab1 Jupyter Notebook: [Lab 1-Transfer-learning-image-classifcation](https://www.dropbox.com/s/49j1ch08nvfv8bf/Lab%201-Transfer-learning-image-classifcation.ipynb?dl=1)
+
+9. Upload the following Jupyter Notebook into your instance
 
 ![](./img/create_notebook_7.png)
 
